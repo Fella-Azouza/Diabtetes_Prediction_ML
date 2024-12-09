@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction de Diabète</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Prédiction de Diabète</h1>
+    <form method="POST" action="/predict">
+        <div class="form-container">
+            <div class="form-group">
+                <label for="age">Âge :</label>
+                <input type="text" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="hypertension">Hypertension :</label>
+                <select name="hypertension" required>
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="heart_disease">Maladie cardiaque :</label>
+                <select name="heart_disease" required>
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bmi">IMC (Indice de Masse Corporelle) :</label>
+                <input type="text" name="bmi" required>
+            </div>
+            <div class="form-group">
+                <label for="HbA1c_level">Niveau HbA1c :</label>
+                <input type="text" name="HbA1c_level" required>
+            </div>
+            <div class="form-group">
+                <label for="blood_glucose_level">Niveau de glucose sanguin :</label>
+                <input type="text" name="blood_glucose_level" required>
+            </div>
+        </div>
+        <button type="submit">Prédire</button>
+    </form>
+    
+    <div class="result">
+    {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+    {% endif %}
+    </div>
+</body>
+</html>
